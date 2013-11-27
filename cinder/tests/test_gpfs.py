@@ -288,7 +288,8 @@ class GPFSDriverTestCase(test.TestCase):
         CONF.gpfs_images_share_mode = 'copy_on_write'
         self.driver.clone_image(volume,
                                 None,
-                                self.image_id)
+                                self.image_id,
+                                {})
 
         self.assertTrue(os.path.exists(volumepath))
         self.volume.delete_volume(self.context, volume['id'])
@@ -309,7 +310,8 @@ class GPFSDriverTestCase(test.TestCase):
         CONF.gpfs_images_share_mode = 'copy'
         self.driver.clone_image(volume,
                                 None,
-                                self.image_id)
+                                self.image_id,
+                                {})
 
         self.assertTrue(os.path.exists(volumepath))
         self.volume.delete_volume(self.context, volume['id'])
